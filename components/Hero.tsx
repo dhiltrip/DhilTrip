@@ -152,7 +152,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.68 }}
-            className="flex flex-col sm:flex-row items-start gap-3"
+            className="flex flex-row gap-4 mt-8"
           >
             <button
               onClick={() => handleScrollTo("#packages")}
