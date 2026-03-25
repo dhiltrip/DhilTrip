@@ -102,14 +102,28 @@ const ChartTooltip = RechartsPrimitive.Tooltip
 
 const ChartTooltipContent = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
-    React.ComponentProps<"div"> & {
-      hideLabel?: boolean
-      hideIndicator?: boolean
-      indicator?: "line" | "dot" | "dashed"
-      nameKey?: string
-      labelKey?: string
-    }
+  {
+    active?: boolean
+    payload?: Array<{
+      dataKey?: string
+      name?: string
+      value?: any
+      payload?: any
+      color?: string
+      type?: string
+    }>
+    label?: any
+    labelFormatter?: (label: any, payload: any[]) => React.ReactNode
+    labelClassName?: string
+    formatter?: (...args: any[]) => React.ReactNode
+    color?: string
+  } & React.ComponentProps<"div"> & {
+    hideLabel?: boolean
+    hideIndicator?: boolean
+    indicator?: "line" | "dot" | "dashed"
+    nameKey?: string
+    labelKey?: string
+  }
 >(
   (
     {
@@ -260,11 +274,18 @@ const ChartLegend = RechartsPrimitive.Legend
 
 const ChartLegendContent = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<"div"> &
-    Pick<RechartsPrimitive.LegendProps, "payload" | "verticalAlign"> & {
-      hideIcon?: boolean
-      nameKey?: string
-    }
+  {
+    payload?: Array<{
+      dataKey?: string
+      type?: string
+      color?: string
+      value?: any
+    }>
+    verticalAlign?: "top" | "middle" | "bottom"
+  } & React.ComponentProps<"div"> & {
+    hideIcon?: boolean
+    nameKey?: string
+  }
 >(
   (
     { className, hideIcon = false, payload, verticalAlign = "bottom", nameKey },
