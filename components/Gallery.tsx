@@ -36,7 +36,6 @@ const photos = [
   'glx7.jpg',
   'glx8.jpg',
   'glx9.jpg',
-
 ];
 
 export function Gallery() {

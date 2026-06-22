@@ -11,10 +11,10 @@ const marqueeItems = [
 ];
 
 const photos = [
-  { src: "Karimun_5.JPG", alt: "Karimunjawa beach" },
-  { src: "Bromo.JPG", alt: "Lush green forest" },
-  { src: "Tamansari.JPG", alt: "Yogyakarta temple" },
-  { src: "Keraton.JPG", alt: "Serene lake" },
+  { src: "Karimun_5.jpg", alt: "Karimunjawa beach" },
+  { src: "kar5.jpg", alt: "Lush green forest" },
+  { src: "swn1.jpg", alt: "Yogyakarta temple" },
+  { src: "brm1.jpg", alt: "Serene lake" },
 ];
 
 function Background() {
@@ -96,7 +96,7 @@ export function Hero() {
       <div className="absolute inset-0 opacity-[0.022] pointer-events-none z-[2]"
         style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")` }} />
 
-      {/* Main content — constrained to same max-width as nav */}
+      {/* Main content */}
       <div className="flex-1 flex flex-col lg:flex-row relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
 
         {/* LEFT — text column */}
@@ -198,7 +198,7 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* RIGHT — photo mosaic, fills remaining 52% */}
+        {/* RIGHT — photo mosaic */}
         <motion.div
           style={{ y: yRight }}
           initial={{ opacity: 0, x: 60 }}
@@ -207,9 +207,7 @@ export function Hero() {
           className="hidden lg:flex lg:w-[52%] items-center justify-center pt-24 pb-6 xl:pt-28 xl:pb-8"
         >
           <div className="relative w-full" style={{ height: "calc(100vh - 260px)" }}>
-            {/* Grid fills the entire right column */}
             <div className="grid grid-cols-3 grid-rows-3 gap-3 h-full">
-              {/* Main large image — top-left 2×2 */}
               <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.4 }}
                 className="col-span-2 row-span-2 rounded-3xl overflow-hidden relative group shadow-2xl shadow-black/40">
                 <img src={photos[0].src} alt={photos[0].alt}
@@ -221,21 +219,29 @@ export function Hero() {
                 </div>
               </motion.div>
 
-              {/* Top-right small image */}
               <motion.div whileHover={{ scale: 1.04 }} transition={{ duration: 0.4 }}
                 className="col-span-1 row-span-1 rounded-2xl overflow-hidden shadow-xl shadow-black/30">
                 <img src={photos[1].src} alt={photos[1].alt}
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
               </motion.div>
 
-              {/* Mid-right small image */}
+              {/* BINGKAI FOTO YANG SAMA (Tengah Kanan) */}
               <motion.div whileHover={{ scale: 1.04 }} transition={{ duration: 0.4 }}
-                className="col-span-1 row-span-1 rounded-2xl overflow-hidden shadow-xl shadow-black/30">
+                className="col-span-1 row-span-1 rounded-2xl overflow-hidden shadow-xl shadow-black/30 relative group">
                 <img src={photos[2].src} alt={photos[2].alt}
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
+                
+                {/* DIKECILIN & MOJOK KANAN BAWAH DI DALAM BINGKAI FOTO */}
+                <div className="absolute bottom-2 right-2 z-20">
+                  <div className="flex items-center gap-1 bg-[#1a4a35]/90 border border-[#ADBC9F]/30 backdrop-blur-sm rounded-lg p-1.5 shadow-md">
+                    <Leaf className="w-2.5 h-2.5 text-[#ADBC9F]" />
+                    <div className="flex flex-col">
+                      <p className="text-[7.5px] font-bold text-[#FBFADA] leading-none tracking-wide">Eco-Certified</p>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
 
-              {/* Bottom full-width image */}
               <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.4 }}
                 className="col-span-3 row-span-1 rounded-2xl overflow-hidden relative group shadow-xl shadow-black/30">
                 <img src={photos[3].src} alt={photos[3].alt}
@@ -243,12 +249,12 @@ export function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-r from-[#12372A]/50 via-transparent to-transparent" />
                 <div className="absolute bottom-3 left-4 flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5 text-[#ADBC9F]" />
-                  <span className="text-xs text-white/80 font-medium">Yogyakarta, Indonesia</span>
+                  <span className="text-xs text-white/80 font-medium">Bromo, Malang</span>
                 </div>
               </motion.div>
             </div>
 
-            {/* Floating card — 50+ Trips, top-right of main image */}
+            {/* Top Right: 50+ Trips Completed */}
             <motion.div
               initial={{ opacity: 0, scale: 0.85, y: -8 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -270,7 +276,7 @@ export function Hero() {
               </motion.div>
             </motion.div>
 
-            {/* Floating card — Eco-Certified, bottom-left area */}
+            {/* Happy Travelers (Bottom Left Over Bromo Pic) */}
             <motion.div
               initial={{ opacity: 0, scale: 0.85, y: 8 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -278,37 +284,20 @@ export function Hero() {
               className="absolute bottom-16 left-4 z-20"
             >
               <motion.div
-                animate={{ y: [0, 6, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                className="flex items-center gap-3 bg-[#1a4a35] border border-[#ADBC9F]/30 rounded-2xl px-4 py-3 shadow-2xl shadow-black/40 min-w-[158px]"
+                animate={{ y: [0, 5, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                className="flex items-center gap-3 bg-[#0c251d]/90 border border-[#ADBC9F]/25 backdrop-blur-md rounded-2xl px-4 py-3 shadow-2xl shadow-black/40 min-w-[165px]"
               >
                 <div className="w-9 h-9 rounded-xl bg-[#ADBC9F]/20 flex items-center justify-center flex-shrink-0">
-                  <Leaf className="w-4 h-4 text-[#ADBC9F]" />
+                  <Users className="w-4 h-4 text-[#ADBC9F]" />
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-[#FBFADA]">Eco-Certified</p>
-                  <p className="text-[10px] text-white/50 mt-0.5">SDGs Aligned ✦ 2025</p>
+                  <p className="text-base font-extrabold text-[#FBFADA] leading-none" style={{ fontFamily: "'Sora', sans-serif" }}>3K+</p>
+                  <p className="text-[10px] text-white/60 mt-0.5 font-medium">Happy Travelers Healed</p>
                 </div>
               </motion.div>
             </motion.div>
 
-            {/* Floating badge — 3K+ travelers, mid-right of grid */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 1.3 }}
-              className="absolute top-1/2 right-4 -translate-y-1/2 z-20"
-            >
-              <motion.div
-                animate={{ y: [0, -5, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                className="flex flex-col items-center gap-1.5 bg-[#0c251d]/85 border border-[#ADBC9F]/25 backdrop-blur-md rounded-2xl px-3 py-3.5 shadow-xl"
-              >
-                <Users className="w-4 h-4 text-[#ADBC9F]" />
-                <p className="text-base font-extrabold text-[#FBFADA] leading-none" style={{ fontFamily: "'Sora', sans-serif" }}>3K+</p>
-                <p className="text-[9px] text-white/50 text-center leading-tight max-w-[46px]">Happy Travelers</p>
-              </motion.div>
-            </motion.div>
           </div>
         </motion.div>
       </div>

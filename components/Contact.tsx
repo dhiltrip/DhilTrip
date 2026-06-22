@@ -52,7 +52,7 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-primary-foreground/60 font-medium mb-1">Email</p>
-                  <p className="text-lg font-semibold">info@dhiltrip.com</p>
+                  <p className="text-lg font-semibold">dhiltrip@gmail.com</p>
                 </div>
               </div>
 
