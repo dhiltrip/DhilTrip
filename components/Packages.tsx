@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Clock, CheckCircle2, X, MapPin, Users, Leaf, ArrowRight, ChevronLeft, ChevronRight, Sparkles, HelpCircle } from "lucide-react";
+import { Clock, CheckCircle2, X, MapPin, Users, Leaf, ArrowRight, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 
-// DATA 100% LENGKAP - BINTANG/REVIEWS DIGANTI DENGAN DYNAMIC BADGES & META UNIQUE DETAILS
 const packages = [
   {
     id: 4,
@@ -12,11 +11,11 @@ const packages = [
     duration: "2D/1N",
     price: "Rp 475.000",
     unit: "/person",
-    badge: "New Adventure", // Menggantikan rating bintang
-    metaDetail: "Stargazing & Yoga", // Keunikan trip
+    badge: "New Adventure",
+    metaDetail: "Stargazing & Yoga",
     tags: ["Adventure", "Camping", "Healing"],
     image: "gkd1.png",
-    images: ["gkd1.png",],
+    images: ["gkd1.png"],
     tagline: "Sleep under the stars and wake up to the sound of breaking waves.",
     description: "Experience an extraordinary night inside premium tents on the cliffside of Gunung Kidul's white sand beach. This open trip camping experience is uniquely curated to balance outdoor adventure with mindful journaling, stargazing, a warm bonfire, and a coastal barbecue feast.",
     includes: [
@@ -63,13 +62,13 @@ const packages = [
     duration: "3D/2N",
     price: "Rp 1.300.000",
     unit: "/person",
-    badge: "Top Verified", // Menandakan sudah banyak testimoni riil
+    badge: "Top Verified",
     metaDetail: "47+ Happy Travelers",
     tags: ["Healing", "Beach", "Nature"],
     image: "/kar8.JPG",
     images: ["/kar8.JPG", "/Karimunjawa_3.JPG", "/Ngapal.JPG", "/Santuy.JPG"],
     tagline: "Reconnect with the ocean, yourself, and your healing journey.",
-    description: "An immersive 3-day healing retreat in the pristine waters of Karimunjawa. Far from the noise of daily life, this trip creates a safe space for personal reflection, emotional recovery, and genuine connection with nature and community. Perfect for university students, young professionals, or anyone needing an emotional and mental reset.",
+    description: "An immersive 3-day healing retreat in the pristine waters of Karimunjawa. Far from the noise of daily life, this trip creates a safe space for personal reflection, emotional recovery, and genuine connection with nature and community.",
     includes: [
       "Guided beach healing & meditation sessions",
       "Daily reflective journaling & deep talk circles",
@@ -93,26 +92,6 @@ const packages = [
           "19:00 — Group welcoming dinner featuring authentic local island seafood culinary"
         ],
       },
-      {
-        day: "Day 2",
-        title: "Ocean Healing & Marine Exploration",
-        activities: [
-          "06:00 — Sunrise mindfulness yoga, breathwork, and meditation on the white sand beach",
-          "08:30 — Boarding local traditional boats for island hopping and snorkeling at coral reefs",
-          "12:00 — Beach picnic lunch and interactive session with local fishing communities",
-          "15:30 — Eco-challenge: coastal waste clearing using exclusive bio-degradable telo bags",
-          "18:00 — Sunset journaling session followed by emotional release sharing circles by the bonfire"
-        ],
-      },
-      {
-        day: "Day 3",
-        title: "Integration & Homecoming Journey",
-        activities: [
-          "07:30 — Morning gratitude reflection and final future-self journaling prompts",
-          "09:00 — Closing certificate ceremony, local souvenir hunting, and group photo session",
-          "11:00 — Boarding the express ferry back to Jepara and smooth transfer back to Yogyakarta"
-        ],
-      },
     ],
     whatsapp: "https://wa.link/99f93s",
     maxGroup: "15 people",
@@ -125,7 +104,7 @@ const packages = [
     duration: "1 Day",
     price: "Rp 285.000",
     unit: "/person",
-    badge: "Trending Choice", 
+    badge: "Trending Choice",
     metaDetail: "Cultural Exploration",
     tags: ["Culture", "Heritage", "Education"],
     image: "/Imlek.jpg",
@@ -150,15 +129,6 @@ const packages = [
           "09:00 — Exploring Sam Poo Kong temple, learning about Admiral Zheng He's legacy",
           "11:00 — Guided heritage walk through the historic streets of Chinatown (Pecinan)"
         ],
-      },
-      {
-        day: "Afternoon",
-        title: "Culinary Fusion & Cultural Workshop",
-        activities: [
-          "12:30 — Traditional culinary lunch experience at an authentic local MSME kitchen",
-          "14:00 — Hands-on sustainability & cultural craft workshop with local artisans",
-          "16:00 — Sunset reflection circle, group photos, and heading back to the drop-off point"
-        ]
       }
     ],
     whatsapp: "https://wa.link/uq1bpz",
@@ -172,24 +142,18 @@ const packages = [
     duration: "2D/1N",
     price: "Rp 195.000",
     unit: "/person",
-    badge: "Most Popular", 
+    badge: "Most Popular",
     metaDetail: "18+ Reviews",
     tags: ["Culture", "Healing", "Community"],
     image: "/Keraton.jpg",
-    images: ["/Keraton.jpg", 
-             "swn1.JPG",
-             'swn2.JPG',
-             'swn5.jpg'
-            ],
+    images: ["/Keraton.jpg", "swn1.JPG", "swn2.JPG", "swn5.jpg"],
     tagline: "Discover the soul of Yogyakarta through culture, connection, and deep reflection.",
     description: "A meaningful two-day cultural immersion in the heart of Yogyakarta. Wander through royal palaces, historical sacred mosques, and ancient heritage streets while engaging in guided self-reflection, mindfulness journaling, and intimate heart-to-heart communal circles.",
     includes: [
       "Guided historical tour of Kraton Yogyakarta & Taman Sari water castle",
       "Immersive evening visit to the historic Grand Mosque of Yogyakarta",
       "Two facilitated deep talk circle integration sessions",
-      "Curated journaling notebook with expert-designed psychological prompts",
-      "Traditional Javanese snacks, lunch, and authentic local herbal drinks (Jamu)",
-      "All operational entrance tickets, workshop fees, and local transport assistance"
+      "Curated journaling notebook with expert-designed psychological prompts"
     ],
     highlights: ["Private royal palace heritage exploration with expert guide", "Spiritual midnight walk & historical mosque experience", "Hands-on cultural immersion workshop with local artisans"],
     itinerary: [
@@ -198,20 +162,8 @@ const packages = [
         title: "Royal Heritage & Intimate Circles",
         activities: [
           "08:00 — Morning gathering at Dhil Trip base & programmatic alignment briefing",
-          "09:00 — Guided cultural trek through Kraton Yogyakarta and the ancient water castle",
-          "13:30 — Interactive cultural class (batik making or traditional pottery crafting with local artisans)",
-          "19:00 — Communal Javanese dinner followed by the first deep talk reflection circle"
+          "09:00 — Guided cultural trek through Kraton Yogyakarta and the ancient water castle"
         ],
-      },
-      {
-        day: "Day 2",
-        title: "Spiritual Alleys & Future Outlook",
-        activities: [
-          "04:30 — Spiritual morning walk, prayer, and silent reflection at the Grand Mosque",
-          "08:00 — Heritage walking tour inside the historical silver-making alleys of Kotagede",
-          "11:00 — Final integration circle: interactive sharing and writing future letters to yourself",
-          "14:00 — Program closing ceremony, feedback gathering, and departure back to initial point"
-        ]
       }
     ],
     whatsapp: "https://wa.link/9r2bnf",
@@ -225,54 +177,26 @@ const packages = [
     duration: "3D/2N",
     price: "Rp 720.000",
     unit: "/person",
-    badge: "Next Departure", 
+    badge: "Next Departure",
     metaDetail: "Vintage 4x4 Jeep",
     tags: ["Landscape", "Mountain", "Wanderlust"],
     image: "brm1.jpg",
-    images: ["brm1.jpg",
-             "brm2.jfif",
-             'brm4.jpg',
-             'brm5.png'],
-
+    images: ["brm1.jpg", "brm2.jfif", "brm4.jpg", "brm5.png"],
     tagline: "Witness the otherworldly golden sunrise above the majestic sea of sand.",
     description: "An epic 3-day journey to one of the most magical volcanic landscapes on Earth. Climb the active crater rim of Mount Bromo, gaze at the unforgettable sunrise from the highest viewpoint, and traverse the whispers of expansive black sand using classic 4x4 vintage Jeeps.",
     includes: [
       "Private 4x4 vintage Jeep tour across the entire Bromo National Park",
       "All-access official entrance tickets to Bromo Tengger Semeru",
-      "Cozy mountain-view premium accommodation/homestay near the mountain",
-      "Daily breakfast, local meals, and signature warm premium beverages",
-      "Professional driver & expert local tour coordinator service",
-      "Round-trip air-conditioned transport from Yogyakarta meeting point"
+      "Cozy mountain-view premium accommodation/homestay near the mountain"
     ],
-    highlights: ["Golden sunrise view from the premium Penanjakan 1 deck", "Hiking to the smoking edge of Bromo's active crater rim", "Cinematographic photoshoot at Savanna & Whispering Sand spots"],
+    highlights: ["Golden sunrise view from the premium Penanjakan 1 deck", "Hiking to the smoking edge of Bromo's active crater rim"],
     itinerary: [
       {
         day: "Day 1",
         title: "Journey to the Highland Transit",
         activities: [
-          "08:00 — Departure from Yogyakarta via comfortable air-conditioned highway transport",
-          "16:00 — Arrival at Tengger highland mountain resort, check-in, and safety briefing",
-          "19:00 — Warming local dinner and stargazing preparation before the midnight assault"
+          "08:00 — Departure from Yogyakarta via comfortable air-conditioned highway transport"
         ],
-      },
-      {
-        day: "Day 2",
-        title: "The Midnight Volcanic Assault",
-        activities: [
-          "02:30 — Private 4x4 Jeep pick-up heading straight to the Penanjakan sunrise deck",
-          "05:00 — Breathtaking sunrise viewing accompanied by premium hot coffee over the clouds",
-          "07:30 — Crossing the vast sea of sand and hiking up the staircase to Bromo's active crater",
-          "10:30 — Exploration of Teletubbies savanna and the dramatic Whispering Sand, return to hotel"
-        ],
-      },
-      {
-        day: "Day 3",
-        title: "Cultural Keepsakes & Homeward Bound",
-        activities: [
-          "08:00 — Leisurely breakfast at the resort and smooth checkout processing",
-          "10:00 — Visiting local community markets for authentic merchandise, returning to Jogja",
-          "19:00 — Safe arrival at the initial Yogyakarta meeting point with unforgettable memories"
-        ]
       }
     ],
     whatsapp: "https://wa.link/ckuigv",
@@ -338,7 +262,7 @@ function PackageModal({ pkg, onClose }: { pkg: typeof packages[0]; onClose: () =
           <div className="overflow-y-auto flex-1 p-5 sm:p-7 space-y-6">
             <div className="flex flex-wrap gap-3">
               {[
-                { icon: Sparkles, label: pkg.badge }, // Menampilkan info badge status di modal
+                { icon: Sparkles, label: pkg.badge },
                 { icon: Clock, label: pkg.duration },
                 { icon: Users, label: `Max ${pkg.maxGroup}` },
                 { icon: MapPin, label: `Min age ${pkg.minAge}` },
@@ -382,29 +306,6 @@ function PackageModal({ pkg, onClose }: { pkg: typeof packages[0]; onClose: () =
                 ))}
               </div>
             </div>
-
-            <div>
-              <h3 className="font-bold text-foreground mb-4 text-base">Itinerary</h3>
-              <div className="space-y-4">
-                {pkg.itinerary.map((day, i) => (
-                  <div key={i} className="relative pl-4 border-l-2 border-[#ADBC9F]/50">
-                    <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-[#12372A] border-2 border-[#ADBC9F]" />
-                    <div className="mb-2">
-                      <span className="text-xs font-bold tracking-widest uppercase text-[#436850]">{day.day}</span>
-                      <h4 className="font-semibold text-foreground">{day.title}</h4>
-                    </div>
-                    <ul className="space-y-1.5">
-                      {day.activities.map((act, j) => (
-                        <li key={j} className="text-sm text-muted-foreground flex items-start gap-2">
-                          <span className="w-1 h-1 rounded-full bg-[#ADBC9F] mt-2 flex-shrink-0" />
-                          {act}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
 
           <div className="flex-shrink-0 p-5 sm:p-7 pt-4 border-t border-border/50 bg-background flex flex-col sm:flex-row gap-3">
@@ -424,7 +325,7 @@ function PackageModal({ pkg, onClose }: { pkg: typeof packages[0]; onClose: () =
 
 export function Packages() {
   const [selectedPkg, setSelectedPkg] = useState<typeof packages[0] | null>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(1); // Mulai dari indeks 1 (Karimunjawa) agar pas di tengah
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % packages.length);
@@ -458,31 +359,30 @@ export function Packages() {
           </div>
         </div>
 
-        <div className="relative w-full px-4 sm:px-16 flex items-center justify-center overflow-visible">
+        <div className="relative w-full flex items-center justify-center">
           
+          {/* Navigasi Desktop (Disembunyikan di HP) */}
           <button 
             onClick={prevSlide}
-            className="absolute left-0 sm:left-2 z-30 w-12 h-12 rounded-full border border-border flex items-center justify-center bg-card/90 backdrop-blur-md text-[#12372A] hover:bg-[#12372A] hover:text-white hover:border-[#12372A] shadow-lg transition-all group hover:scale-105 active:scale-95"
+            className="hidden md:flex absolute left-2 z-30 w-12 h-12 rounded-full border border-border items-center justify-center bg-card/90 backdrop-blur-md text-[#12372A] hover:bg-[#12372A] hover:text-white hover:border-[#12372A] shadow-lg transition-all group hover:scale-105 active:scale-95"
           >
             <ChevronLeft className="w-5 h-5 transition-transform group-hover:-translate-x-0.5" />
           </button>
 
           <button 
             onClick={nextSlide}
-            className="absolute right-0 sm:right-2 z-30 w-12 h-12 rounded-full border border-border flex items-center justify-center bg-card/90 backdrop-blur-md text-[#12372A] hover:bg-[#12372A] hover:text-white hover:border-[#12372A] shadow-lg transition-all group hover:scale-105 active:scale-95"
+            className="hidden md:flex absolute right-2 z-30 w-12 h-12 rounded-full border border-border items-center justify-center bg-card/90 backdrop-blur-md text-[#12372A] hover:bg-[#12372A] hover:text-white hover:border-[#12372A] shadow-lg transition-all group hover:scale-105 active:scale-95"
           >
             <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
           </button>
 
-          <div className="w-full overflow-visible py-6 px-2">
+          {/* WRAPPER UTAMA: Di HP jadi scrollable horizontal, di desktop pake sistem animasi lama */}
+          <div className="w-full py-6 overflow-x-auto md:overflow-hidden snap-x snap-mandatory scrollbar-none px-4 md:px-0">
             <motion.div 
-              className="flex gap-8 items-center overflow-visible"
-              animate={{ x: `calc(33.333% - 16px - (${currentIndex * 33.333}% + ${currentIndex * 32}px))` }}
+              className="flex gap-6 md:gap-8 items-stretch"
+              // Efek slide hanya berjalan di layar desktop (lebar layar > 768px)
+              animate={typeof window !== "undefined" && window.innerWidth > 768 ? { x: `calc(33.333% - 16px - (${currentIndex * 33.333}% + ${currentIndex * 32}px))` } : { x: 0 }}
               transition={{ type: "spring", stiffness: 90, damping: 18 }}
-              style={{
-                display: "flex",
-                width: "100%",
-              }}
             >
               {packages.map((pkg, idx) => {
                 const isCenter = idx === currentIndex;
@@ -491,20 +391,22 @@ export function Packages() {
                   <motion.div 
                     key={pkg.id}
                     onClick={() => {
-                      if (!isCenter) setCurrentIndex(idx);
+                      if (typeof window !== "undefined" && window.innerWidth > 768 && !isCenter) setCurrentIndex(idx);
                     }}
-                    animate={{
+                    // Efek scale & opacity redup hanya aktif di layar desktop
+                    animate={typeof window !== "undefined" && window.innerWidth > 768 ? {
                       scale: isCenter ? 1 : 0.90,
                       opacity: isCenter ? 1 : 0.45,
-                    }}
+                    } : { scale: 1, opacity: 1 }}
                     transition={{ duration: 0.4, ease: "easeInOut" }}
-                    className={`w-full sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] shrink-0 bg-card rounded-[2rem] overflow-hidden shadow-lg border transition-all duration-300 flex flex-col group ${
+                    // KUNCI MOBILE RESPONSIVE: Menggunakan min-w dan snap-center agar presisi di HP
+                    className={`w-[82vw] sm:w-[45vw] md:w-[calc(33.333%-22px)] shrink-0 bg-card rounded-[2rem] overflow-hidden shadow-lg border flex flex-col group snap-center ${
                       isCenter 
-                        ? "border-[#ADBC9F]/60 shadow-2xl cursor-default relative z-20" 
-                        : "border-border/40 cursor-pointer hover:opacity-70 relative z-10"
+                        ? "border-[#ADBC9F]/60 shadow-2xl md:z-20" 
+                        : "border-border/40 md:z-10"
                     }`}
                   >
-                    <div className="relative h-56 overflow-hidden">
+                    <div className="relative h-48 sm:h-56 overflow-hidden">
                       <img src={pkg.image} alt={pkg.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/65 to-transparent" />
                       <div className="absolute top-4 left-4 flex gap-2 flex-wrap">
@@ -513,7 +415,6 @@ export function Packages() {
                         ))}
                       </div>
                       <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
-                        {/* REPLACEMENT FOR STARS: SEBUAH BADGE STATUS DAN DETAIL SPEK UNIQUE */}
                         <div className="flex items-center gap-1.5 text-white bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">
                           <Sparkles className="w-3.5 h-3.5 text-amber-300 fill-amber-300" />
                           <span className="font-semibold text-xs tracking-wide uppercase text-amber-100">{pkg.badge}</span>
@@ -525,36 +426,35 @@ export function Packages() {
                       </div>
                     </div>
 
-                    <div className="p-7 flex flex-col flex-grow">
-                      {/* SUB-DETAIL UNIK BADGE DI BAWAH JUDUL */}
+                    <div className="p-5 sm:p-7 flex flex-col flex-grow">
                       <div className="text-xs font-semibold text-[#436850] tracking-wide mb-1 flex items-center gap-1">
                         <span className="w-1 h-1 rounded-full bg-[#436850]" />
                         {pkg.metaDetail}
                       </div>
                       
-                      <h3 className="text-xl font-display font-bold text-foreground mb-1 group-hover:text-[#12372A] transition-colors">{pkg.title}</h3>
-                      <div className="mb-5">
-                        <span className="text-2xl font-bold text-[#12372A]">{pkg.price}</span>
+                      <h3 className="text-lg sm:text-xl font-display font-bold text-foreground mb-1 group-hover:text-[#12372A] transition-colors">{pkg.title}</h3>
+                      <div className="mb-4">
+                        <span className="text-xl sm:text-2xl font-bold text-[#12372A]">{pkg.price}</span>
                         <span className="text-muted-foreground text-sm">{pkg.unit}</span>
                       </div>
-                      <div className="space-y-2.5 mb-7 flex-grow">
-                        {pkg.includes.slice(0, 4).map((item) => (
+                      <div className="space-y-2.5 mb-6 flex-grow">
+                        {pkg.includes.slice(0, 3).map((item) => (
                           <div key={item} className="flex items-start gap-2.5">
                             <CheckCircle2 className="w-4 h-4 text-[#436850] shrink-0 mt-0.5" />
-                            <span className="text-foreground/75 text-sm leading-snug">{item}</span>
+                            <span className="text-foreground/75 text-xs sm:text-sm leading-snug">{item}</span>
                           </div>
                         ))}
-                        {pkg.includes.length > 4 && (
-                          <p className="text-xs text-[#436850] font-medium pl-6">+{pkg.includes.length - 4} more included</p>
+                        {pkg.includes.length > 3 && (
+                          <p className="text-xs text-[#436850] font-medium pl-6">+{pkg.includes.length - 3} more included</p>
                         )}
                       </div>
-                      <div className="flex gap-3">
+                      <div className="flex gap-2 sm:gap-3 mt-auto">
                         <button 
                           onClick={(e) => {
                             e.stopPropagation();
                             setSelectedPkg(pkg);
                           }} 
-                          className="flex-1 py-3 rounded-xl border-2 border-[#12372A]/20 text-[#12372A] font-semibold text-sm hover:border-[#12372A]/50 hover:bg-[#12372A]/5 transition-all duration-200"
+                          className="flex-1 py-3 rounded-xl border-2 border-[#12372A]/20 text-[#12372A] font-semibold text-xs sm:text-sm hover:border-[#12372A]/50 hover:bg-[#12372A]/5 transition-all duration-200"
                         >
                           View Details
                         </button>
@@ -563,7 +463,7 @@ export function Packages() {
                             e.stopPropagation();
                             window.open(pkg.whatsapp, "_blank");
                           }} 
-                          className="flex-1 py-3 rounded-xl bg-[#12372A] text-[#FBFADA] font-semibold text-sm hover:bg-[#1a4a35] transition-all duration-200 flex items-center justify-center gap-1.5"
+                          className="flex-1 py-3 rounded-xl bg-[#12372A] text-[#FBFADA] font-semibold text-xs sm:text-sm hover:bg-[#1a4a35] transition-all duration-200 flex items-center justify-center gap-1.5"
                         >
                           Book Now
                           <ArrowRight className="w-3.5 h-3.5" />

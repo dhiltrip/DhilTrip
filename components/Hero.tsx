@@ -88,7 +88,7 @@ export function Hero() {
     <section
       ref={sectionRef}
       id="home"
-      className="relative h-screen overflow-hidden flex flex-col"
+      className="relative min-h-screen lg:h-screen overflow-x-hidden flex flex-col"
     >
       <Background />
 
@@ -97,12 +97,12 @@ export function Hero() {
         style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")` }} />
 
       {/* Main content */}
-      <div className="flex-1 flex flex-col lg:flex-row relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+      <div className="flex-1 flex flex-col lg:flex-row relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-12 lg:pb-0">
 
         {/* LEFT — text column */}
         <motion.div
           style={{ y: yLeft }}
-          className="flex-1 lg:flex-none lg:w-[48%] flex flex-col justify-center pr-0 lg:pr-10 xl:pr-16 pt-24 pb-4 lg:pt-0 lg:pb-0"
+          className="flex-1 lg:flex-none lg:w-[48%] flex flex-col justify-center pr-0 lg:pr-10 xl:pr-16 pt-24 pb-8 lg:pt-0 lg:pb-0"
         >
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -152,7 +152,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.68 }}
-            className="flex flex-row gap-4 mt-8"
+            className="flex flex-row gap-4 mt-4 lg:mt-8"
           >
             <button
               onClick={() => handleScrollTo("#packages")}
@@ -198,15 +198,15 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* RIGHT — photo mosaic */}
+        {/* RIGHT — photo mosaic (DIUBAH AGAR AKTIF DI HP DAN RESPONSIVE) */}
         <motion.div
           style={{ y: yRight }}
           initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="hidden lg:flex lg:w-[52%] items-center justify-center pt-24 pb-6 xl:pt-28 xl:pb-8"
+          className="flex w-full lg:w-[52%] items-center justify-center pt-4 pb-6 lg:pt-24 xl:pt-28 xl:pb-8"
         >
-          <div className="relative w-full" style={{ height: "calc(100vh - 260px)" }}>
+          <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[calc(100vh-260px)]">
             <div className="grid grid-cols-3 grid-rows-3 gap-3 h-full">
               <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.4 }}
                 className="col-span-2 row-span-2 rounded-3xl overflow-hidden relative group shadow-2xl shadow-black/40">
