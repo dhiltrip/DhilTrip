@@ -77,6 +77,7 @@ export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
 
+  // Parallax halus dinonaktifkan di layar kecil agar performa scroll HP enteng
   const yLeft = useTransform(scrollYProgress, [0, 1], [0, -30]);
   const yRight = useTransform(scrollYProgress, [0, 1], [0, -15]);
 
@@ -88,7 +89,7 @@ export function Hero() {
     <section
       ref={sectionRef}
       id="home"
-      className="relative min-h-screen lg:h-screen overflow-x-hidden flex flex-col"
+      className="relative min-h-screen overflow-x-hidden flex flex-col justify-between"
     >
       <Background />
 
@@ -97,18 +98,18 @@ export function Hero() {
         style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")` }} />
 
       {/* Main content */}
-      <div className="flex-1 flex flex-col lg:flex-row relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-12 lg:pb-0">
+      <div className="flex-1 flex flex-col lg:flex-row relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-24 pb-12 lg:py-0 items-center justify-center gap-8 lg:gap-0">
 
         {/* LEFT — text column */}
         <motion.div
-          style={{ y: yLeft }}
-          className="flex-1 lg:flex-none lg:w-[48%] flex flex-col justify-center pr-0 lg:pr-10 xl:pr-16 pt-24 pb-8 lg:pt-0 lg:pb-0"
+          style={{ y: typeof window !== "undefined" && window.innerWidth > 1024 ? yLeft : 0 }}
+          className="w-full lg:w-[48%] flex flex-col justify-center pr-0 lg:pr-6 xl:pr-12 text-left"
         >
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
-            className="inline-flex items-center gap-2 self-start mb-5 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm"
+            className="inline-flex items-center gap-2 self-start mb-4 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm"
           >
             <Leaf className="w-3 h-3 text-[#ADBC9F]" />
             <span className="text-[10px] font-semibold tracking-widest uppercase text-[#ADBC9F]">
@@ -130,7 +131,7 @@ export function Hero() {
                 style={{
                   fontFamily: "'Sora', sans-serif",
                   color,
-                  fontSize: "clamp(3.8rem, 8.5vw, 7.5rem)",
+                  fontSize: "clamp(3.5rem, 8vw, 7rem)",
                 }}
               >
                 {word}
@@ -142,7 +143,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.55 }}
-            className="text-sm sm:text-base text-white/55 max-w-sm leading-relaxed mt-5 mb-7"
+            className="text-sm sm:text-base text-white/60 max-w-md leading-relaxed mt-4 mb-6"
           >
             Where every journey becomes a space for self-recovery, environmental
             awareness, and genuine human connection — based in Yogyakarta, Indonesia.
@@ -152,11 +153,11 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.68 }}
-            className="flex flex-row gap-4 mt-4 lg:mt-8"
+            className="flex flex-row items-center gap-4"
           >
             <button
               onClick={() => handleScrollTo("#packages")}
-              className="group flex items-center gap-3 px-6 py-3.5 bg-[#FBFADA] text-[#12372A] font-bold rounded-2xl text-sm hover:bg-white transition-all duration-300 shadow-2xl shadow-black/30"
+              className="group flex items-center gap-3 px-6 py-3.5 bg-[#FBFADA] text-[#12372A] font-bold rounded-2xl text-sm hover:bg-white transition-all duration-300 shadow-xl shadow-black/20"
             >
               Book a Trip
               <span className="w-5 h-5 rounded-full bg-[#12372A] text-[#FBFADA] flex items-center justify-center group-hover:translate-x-1 transition-transform duration-300">
@@ -175,7 +176,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.9 }}
-            className="flex flex-wrap items-center gap-5 mt-8"
+            className="flex flex-wrap items-center gap-x-5 gap-y-3 mt-8 pt-4 border-t border-white/5"
           >
             <div className="flex items-center gap-1.5">
               <div className="flex">
@@ -185,12 +186,12 @@ export function Hero() {
               </div>
               <span className="text-xs text-white/45 ml-1">5.0 avg rating</span>
             </div>
-            <div className="w-px h-3 bg-white/20" />
+            <div className="hidden sm:block w-px h-3 bg-white/20" />
             <div className="flex items-center gap-1.5 text-xs text-white/45">
               <Wind className="w-3 h-3 text-[#ADBC9F]" />
               <span>200+ travelers healed</span>
             </div>
-            <div className="w-px h-3 bg-white/20" />
+            <div className="hidden sm:block w-px h-3 bg-white/20" />
             <div className="flex items-center gap-1.5 text-xs text-white/45">
               <Users className="w-3 h-3 text-[#ADBC9F]" />
               <span>SDGs Aligned</span>
@@ -198,102 +199,101 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* RIGHT — photo mosaic (DIUBAH AGAR AKTIF DI HP DAN RESPONSIVE) */}
+        {/* RIGHT — photo mosaic */}
         <motion.div
-          style={{ y: yRight }}
-          initial={{ opacity: 0, x: 60 }}
+          style={{ y: typeof window !== "undefined" && window.innerWidth > 1024 ? yRight : 0 }}
+          initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="flex w-full lg:w-[52%] items-center justify-center pt-4 pb-6 lg:pt-24 xl:pt-28 xl:pb-8"
+          className="w-full lg:w-[52%] flex items-center justify-center relative mt-4 lg:mt-0"
         >
-          <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[calc(100vh-260px)]">
-            <div className="grid grid-cols-3 grid-rows-3 gap-3 h-full">
-              <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.4 }}
-                className="col-span-2 row-span-2 rounded-3xl overflow-hidden relative group shadow-2xl shadow-black/40">
-                <img src={photos[0].src} alt={photos[0].alt}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#12372A]/60 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 flex items-center gap-2 bg-black/35 backdrop-blur-md px-3 py-1.5 rounded-full">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#ADBC9F] animate-pulse" />
-                  <span className="text-xs text-white font-medium">Karimunjawa</span>
+          <div className="relative w-full aspect-[4/3] sm:aspect-[1.2] max-h-[420px] sm:max-h-[480px] lg:max-h-[calc(100vh-180px)] grid grid-cols-3 grid-rows-3 gap-2.5 sm:gap-3.5">
+            
+            {/* Foto 1: Karimunjawa (Kiri Atas Besar) */}
+            <motion.div whileHover={{ scale: 1.015 }} transition={{ duration: 0.4 }}
+              className="col-span-2 row-span-2 rounded-2xl sm:rounded-3xl overflow-hidden relative group shadow-xl shadow-black/30">
+              <img src={photos[0].src} alt={photos[0].alt}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#12372A]/70 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 flex items-center gap-2 bg-black/40 backdrop-blur-md px-2.5 py-1.5 rounded-full">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#ADBC9F] animate-pulse" />
+                <span className="text-[11px] text-white font-medium">Karimunjawa</span>
+              </div>
+            </motion.div>
+
+            {/* Foto 2: Forest (Kanan Atas) */}
+            <motion.div whileHover={{ scale: 1.03 }} transition={{ duration: 0.4 }}
+              className="col-span-1 row-span-1 rounded-xl sm:rounded-2xl overflow-hidden shadow-lg shadow-black/20">
+              <img src={photos[1].src} alt={photos[1].alt}
+                className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
+            </motion.div>
+
+            {/* Foto 3: Temple & Eco Label (Kanan Tengah) */}
+            <motion.div whileHover={{ scale: 1.03 }} transition={{ duration: 0.4 }}
+              className="col-span-1 row-span-1 rounded-xl sm:rounded-2xl overflow-hidden shadow-lg shadow-black/20 relative group">
+              <img src={photos[2].src} alt={photos[2].alt}
+                className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
+              
+              <div className="absolute bottom-2 right-2 z-20">
+                <div className="flex items-center gap-1 bg-[#1a4a35]/95 border border-[#ADBC9F]/30 backdrop-blur-sm rounded-lg p-1 sm:p-1.5 shadow-md">
+                  <Leaf className="w-2.5 h-2.5 text-[#ADBC9F]" />
+                  <p className="text-[7.5px] font-bold text-[#FBFADA] leading-none tracking-wide uppercase">Eco-Certified</p>
                 </div>
-              </motion.div>
+              </div>
+            </motion.div>
 
-              <motion.div whileHover={{ scale: 1.04 }} transition={{ duration: 0.4 }}
-                className="col-span-1 row-span-1 rounded-2xl overflow-hidden shadow-xl shadow-black/30">
-                <img src={photos[1].src} alt={photos[1].alt}
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
-              </motion.div>
+            {/* Foto 4: Bromo (Bawah Lebar) */}
+            <motion.div whileHover={{ scale: 1.015 }} transition={{ duration: 0.4 }}
+              className="col-span-3 row-span-1 rounded-xl sm:rounded-2xl overflow-hidden relative group shadow-lg shadow-black/20">
+              <img src={photos[3].src} alt={photos[3].alt}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#12372A]/60 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-4 flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-[#ADBC9F]" />
+                <span className="text-xs text-white/90 font-medium">Bromo, Malang</span>
+              </div>
+            </motion.div>
 
-              {/* BINGKAI FOTO YANG SAMA (Tengah Kanan) */}
-              <motion.div whileHover={{ scale: 1.04 }} transition={{ duration: 0.4 }}
-                className="col-span-1 row-span-1 rounded-2xl overflow-hidden shadow-xl shadow-black/30 relative group">
-                <img src={photos[2].src} alt={photos[2].alt}
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
-                
-                {/* DIKECILIN & MOJOK KANAN BAWAH DI DALAM BINGKAI FOTO */}
-                <div className="absolute bottom-2 right-2 z-20">
-                  <div className="flex items-center gap-1 bg-[#1a4a35]/90 border border-[#ADBC9F]/30 backdrop-blur-sm rounded-lg p-1.5 shadow-md">
-                    <Leaf className="w-2.5 h-2.5 text-[#ADBC9F]" />
-                    <div className="flex flex-col">
-                      <p className="text-[7.5px] font-bold text-[#FBFADA] leading-none tracking-wide">Eco-Certified</p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.4 }}
-                className="col-span-3 row-span-1 rounded-2xl overflow-hidden relative group shadow-xl shadow-black/30">
-                <img src={photos[3].src} alt={photos[3].alt}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#12372A]/50 via-transparent to-transparent" />
-                <div className="absolute bottom-3 left-4 flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-[#ADBC9F]" />
-                  <span className="text-xs text-white/80 font-medium">Bromo, Malang</span>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Top Right: 50+ Trips Completed */}
+            {/* Lencana Mengambang 1: Trips Completed (Kanan Atas Luar Mosaik) */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.85, y: -8 }}
+              initial={{ opacity: 0, scale: 0.85, y: -10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.9 }}
-              className="absolute top-4 right-4 z-20"
+              className="absolute -top-3 -right-2 sm:-top-5 sm:right-4 z-20"
             >
               <motion.div
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="bg-[#FBFADA] rounded-2xl px-4 py-3 shadow-2xl shadow-black/40 flex items-center gap-3 min-w-[148px]"
+                className="bg-[#FBFADA] rounded-xl sm:rounded-2xl px-3 py-2 sm:px-4 sm:py-3 shadow-xl shadow-black/30 flex items-center gap-2 sm:gap-3 min-w-[120px] sm:min-w-[148px]"
               >
-                <div className="w-9 h-9 rounded-xl bg-[#12372A] flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-4 h-4 text-[#ADBC9F]" />
+                <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-[#12372A] flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-[#ADBC9F]" />
                 </div>
                 <div>
-                  <p className="text-xl font-extrabold text-[#12372A] leading-none" style={{ fontFamily: "'Sora', sans-serif" }}>50+</p>
-                  <p className="text-[10px] font-medium text-[#436850] mt-0.5">Trips Completed</p>
+                  <p className="text-base sm:text-xl font-extrabold text-[#12372A] leading-none" style={{ fontFamily: "'Sora', sans-serif" }}>50+</p>
+                  <p className="text-[8px] sm:text-[10px] font-medium text-[#436850] mt-0.5 sm:mt-1">Trips Completed</p>
                 </div>
               </motion.div>
             </motion.div>
 
-            {/* Happy Travelers (Bottom Left Over Bromo Pic) */}
+            {/* Lencana Mengambang 2: Happy Travelers (Kiri Bawah Mengambang Luar) */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.85, y: 8 }}
+              initial={{ opacity: 0, scale: 0.85, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 1.1 }}
-              className="absolute bottom-16 left-4 z-20"
+              className="absolute -bottom-4 left-2 sm:-bottom-5 sm:left-6 z-20"
             >
               <motion.div
                 animate={{ y: [0, 5, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                className="flex items-center gap-3 bg-[#0c251d]/90 border border-[#ADBC9F]/25 backdrop-blur-md rounded-2xl px-4 py-3 shadow-2xl shadow-black/40 min-w-[165px]"
+                className="flex items-center gap-2 sm:gap-3 bg-[#0c251d]/95 border border-[#ADBC9F]/25 backdrop-blur-md rounded-xl sm:rounded-2xl px-3 py-2 sm:px-4 sm:py-3 shadow-xl shadow-black/30 min-w-[135px] sm:min-w-[165px]"
               >
-                <div className="w-9 h-9 rounded-xl bg-[#ADBC9F]/20 flex items-center justify-center flex-shrink-0">
-                  <Users className="w-4 h-4 text-[#ADBC9F]" />
+                <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-[#ADBC9F]/20 flex items-center justify-center flex-shrink-0">
+                  <Users className="w-3 sm:w-4 h-3 sm:h-4 text-[#ADBC9F]" />
                 </div>
                 <div>
-                  <p className="text-base font-extrabold text-[#FBFADA] leading-none" style={{ fontFamily: "'Sora', sans-serif" }}>3K+</p>
-                  <p className="text-[10px] text-white/60 mt-0.5 font-medium">Happy Travelers Healed</p>
+                  <p className="text-sm sm:text-base font-extrabold text-[#FBFADA] leading-none" style={{ fontFamily: "'Sora', sans-serif" }}>3K+</p>
+                  <p className="text-[8px] sm:text-[10px] text-white/60 mt-0.5 sm:mt-1 font-medium">Travelers Healed</p>
                 </div>
               </motion.div>
             </motion.div>
@@ -303,7 +303,7 @@ export function Hero() {
       </div>
 
       {/* Marquee ticker */}
-      <div className="relative z-10 border-t border-white/10 bg-[#0c251d]/90 overflow-hidden py-2.5 flex-shrink-0">
+      <div className="relative z-10 border-t border-white/10 bg-[#0c251d]/90 overflow-hidden py-3 mt-4 lg:mt-0 flex-shrink-0">
         <motion.div
           animate={{ x: ["0%", "-50%"] }}
           transition={{ duration: 28, repeat: Infinity, ease: "linear" }}

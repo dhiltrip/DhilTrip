@@ -325,7 +325,7 @@ function PackageModal({ pkg, onClose }: { pkg: typeof packages[0]; onClose: () =
 
 export function Packages() {
   const [selectedPkg, setSelectedPkg] = useState<typeof packages[0] | null>(null);
-  const [currentIndex, setCurrentIndex] = useState(1); // Mulai dari indeks 1 (Karimunjawa) agar pas di tengah
+  const [currentIndex, setCurrentIndex] = useState(1); // Mulai dari indeks 1 (Karimunjawa)
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % packages.length);
@@ -359,9 +359,9 @@ export function Packages() {
           </div>
         </div>
 
-        <div className="relative w-full flex items-center justify-center">
+        <div className="relative w-full flex flex-col items-center justify-center">
           
-          {/* Navigasi Desktop (Disembunyikan di HP) */}
+          {/* Navigasi Desktop */}
           <button 
             onClick={prevSlide}
             className="hidden md:flex absolute left-2 z-30 w-12 h-12 rounded-full border border-border items-center justify-center bg-card/90 backdrop-blur-md text-[#12372A] hover:bg-[#12372A] hover:text-white hover:border-[#12372A] shadow-lg transition-all group hover:scale-105 active:scale-95"
@@ -376,11 +376,10 @@ export function Packages() {
             <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
           </button>
 
-          {/* WRAPPER UTAMA: Di HP jadi scrollable horizontal, di desktop pake sistem animasi lama */}
-          <div className="w-full py-6 overflow-x-auto md:overflow-hidden snap-x snap-mandatory scrollbar-none px-4 md:px-0">
+          {/* WRAPPER UTAMA */}
+          <div className="w-full py-2 overflow-x-auto md:overflow-hidden snap-x snap-mandatory scrollbar-none">
             <motion.div 
-              className="flex gap-6 md:gap-8 items-stretch"
-              // Efek slide hanya berjalan di layar desktop (lebar layar > 768px)
+              className="flex gap-6 md:gap-8 items-stretch px-2 md:px-0"
               animate={typeof window !== "undefined" && window.innerWidth > 768 ? { x: `calc(33.333% - 16px - (${currentIndex * 33.333}% + ${currentIndex * 32}px))` } : { x: 0 }}
               transition={{ type: "spring", stiffness: 90, damping: 18 }}
             >
@@ -393,13 +392,11 @@ export function Packages() {
                     onClick={() => {
                       if (typeof window !== "undefined" && window.innerWidth > 768 && !isCenter) setCurrentIndex(idx);
                     }}
-                    // Efek scale & opacity redup hanya aktif di layar desktop
                     animate={typeof window !== "undefined" && window.innerWidth > 768 ? {
                       scale: isCenter ? 1 : 0.90,
                       opacity: isCenter ? 1 : 0.45,
                     } : { scale: 1, opacity: 1 }}
                     transition={{ duration: 0.4, ease: "easeInOut" }}
-                    // KUNCI MOBILE RESPONSIVE: Menggunakan min-w dan snap-center agar presisi di HP
                     className={`w-[82vw] sm:w-[45vw] md:w-[calc(33.333%-22px)] shrink-0 bg-card rounded-[2rem] overflow-hidden shadow-lg border flex flex-col group snap-center ${
                       isCenter 
                         ? "border-[#ADBC9F]/60 shadow-2xl md:z-20" 
@@ -426,7 +423,7 @@ export function Packages() {
                       </div>
                     </div>
 
-                    <div className="p-5 sm:p-7 flex flex-col flex-grow">
+                    <div className="p-5 sm:p-7 flex flex-col flex-grow bg-card">
                       <div className="text-xs font-semibold text-[#436850] tracking-wide mb-1 flex items-center gap-1">
                         <span className="w-1 h-1 rounded-full bg-[#436850]" />
                         {pkg.metaDetail}
@@ -475,6 +472,30 @@ export function Packages() {
               })}
             </motion.div>
           </div>
+
+          {/* INDIKATOR MOBILE NAVIGASI PANAH (HANYA AKTIF DI LAYAR HP) */}
+          <div className="flex items-center justify-center gap-4 mt-6 md:hidden">
+            <button
+              onClick={prevSlide}
+              className="w-11 h-11 rounded-full border border-[#12372A]/15 bg-white flex items-center justify-center text-[#12372A] active:scale-90 transition-transform shadow-md"
+              aria-label="Previous Slide"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            
+            <span className="text-[11px] font-bold text-[#12372A]/50 uppercase tracking-widest animate-pulse">
+              Swipe or Tap
+            </span>
+            
+            <button
+              onClick={nextSlide}
+              className="w-11 h-11 rounded-full border border-[#12372A]/15 bg-white flex items-center justify-center text-[#12372A] active:scale-90 transition-transform shadow-md"
+              aria-label="Next Slide"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+
         </div>
       </div>
 
