@@ -11,9 +11,9 @@ const marqueeItems = [
 ];
 
 const photos = [
-  { src: "Karimun_5.jpg", alt: "Karimunjawa beach" },
+  { src: "Karimun_5.JPG", alt: "Karimunjawa beach" },
   { src: "kar5.jpg", alt: "Lush green forest" },
-  { src: "swn1.jpg", alt: "Yogyakarta temple" },
+  { src: "swn1.JPG", alt: "Yogyakarta temple" },
   { src: "brm1.jpg", alt: "Serene lake" },
 ];
 
